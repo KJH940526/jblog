@@ -27,9 +27,7 @@ public class BlogController {
 			@PathVariable Optional<Long> post, 
 			Model model) {
 
-		System.out.println(id +" " + category+" " + post);
-		model.addAttribute(id);
-				
+		System.out.println(id +" " + category+" " + post);				
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		
 		model.addAttribute("category", category);
