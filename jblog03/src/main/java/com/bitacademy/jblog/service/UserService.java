@@ -32,7 +32,7 @@ public class UserService {
 		//블로그 생성!
 		BlogVo blogVo = new BlogVo();
 		blogVo.setId(userVo.getId());
-		blogVo.setTitle(userVo.getName() + "블로그");
+		blogVo.setTitle(userVo.getName() + " 블로그");
 		blogVo.setLogo("/assets/images/spring-logo.jpg");
 		
 		blogRepository.insertBlog(blogVo);
