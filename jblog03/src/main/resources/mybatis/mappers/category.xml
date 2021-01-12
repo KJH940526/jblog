@@ -20,12 +20,9 @@
 		]]>
 	</select>
 	
-	<delete id="deleteCategory" parameterType="map" > 
+	<delete id="deleteCategory" parameterType="long" > 
 		<![CDATA[
-		delete
-		  from category 
-		 where no = #{no }
-		   and  = #{userNo }
+			delete from category where no=#{no }
 		]]>	
 	</delete>
 	

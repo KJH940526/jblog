@@ -76,7 +76,6 @@ public class BlogController {
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		List<CategoryVo> categoryList =  blogService.getCategoryList(id);
 		model.addAttribute("categoryList", categoryList);
-		model.addAttribute("postCount", categoryList.size());
 		model.addAttribute("blogVo", blogVo);
 		
 		return "blog/blog-admin-category";
@@ -94,6 +93,14 @@ public class BlogController {
 		}
 		
 		blogService.writeCategory(id,categoryVo);
+		
+		return "redirect:/"+id+"/category";
+	}
+	
+	@RequestMapping(value="/category/delete/{no}", method=RequestMethod.GET)
+	public String delete(@PathVariable String id,@PathVariable Long no) {
+		
+		blogService.deleteCategory(no);
 		
 		return "redirect:/"+id+"/category";
 	}

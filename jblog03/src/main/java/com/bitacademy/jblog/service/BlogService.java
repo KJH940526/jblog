@@ -43,5 +43,8 @@ public class BlogService {
 		return blogRepository.getLogoAndTitle(id);
 	}
 	
+	public void deleteCategory(Long no) {
+		blogRepository.deleteCategory(no);
+	}
 	
 }

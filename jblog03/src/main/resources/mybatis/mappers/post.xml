@@ -16,6 +16,13 @@
 		where c.id = #{id }
 		]]>	
 	</select>
+	
+	<!-- 카테고리 포스트 다 지우기!! -->
+	<delete id="deletePost" parameterType="Long">
+		<![CDATA[
+			delete from post where category_no=#{no }
+		]]>
+	</delete>
 
 
 </mapper>

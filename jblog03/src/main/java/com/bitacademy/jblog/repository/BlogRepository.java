@@ -34,8 +34,9 @@ public class BlogRepository {
 	}
 	
 	// 카테고리 지울때!
-	public int deleteCategory(CategoryVo categoryVo) {
-		return sqlSession.delete("category.deleteCategory", categoryVo);
+	public void deleteCategory(long no) {
+		sqlSession.delete("post.deletePost", no);
+		sqlSession.delete("category.deleteCategory", no);
 	}
 	
 	// 카테고리 리스트!

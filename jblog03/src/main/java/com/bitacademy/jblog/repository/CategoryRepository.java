@@ -24,5 +24,11 @@ public class CategoryRepository {
 		
 		sqlSession.insert("category.insertCategory", map);
 	}
+	
+	public void deleteCategory(Long no) {
+		sqlSession.delete("post.deletePost", no);
+		sqlSession.delete("category.deleteCategory", no);
+		
+	}
 
 }
