@@ -8,4 +8,20 @@
 		values(#{id }, #{title }, #{logo })
 		]]>
 	</insert>
+	
+	<select id="getLogoAndTitle" parameterType='string' resultType='blogVo'>
+		<![CDATA[
+			select title, logo from blog
+			where id = #{id};
+		]]>
+	</select>
+	
+	<update id="updateBlog" parameterType='blogVo'>
+		<![CDATA[
+		update blog
+		set title = #{title }, logo = #{logo }
+		where id = #{id };
+		]]>
+	</update>
+	
 </mapper>

@@ -3,6 +3,7 @@
 
 <mapper namespace="category">
 
+	<!-- 카테고리 만들기! -->
 	<insert id="insertCategory" parameterType="categoryVo">
 		<![CDATA[
 		insert into category 
@@ -18,5 +19,14 @@
 		order by reg_date desc
 		]]>
 	</select>
+	
+	<delete id="deleteCategory" parameterType="map" > 
+		<![CDATA[
+		delete
+		  from category 
+		 where no = #{no }
+		   and  = #{userNo }
+		]]>	
+	</delete>
 	
 </mapper>
