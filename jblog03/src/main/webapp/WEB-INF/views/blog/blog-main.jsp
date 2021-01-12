@@ -38,7 +38,9 @@
 					<p>
 				</div>
 				<ul class="blog-list">
-					<li><a href="">${postList }</a> <span>2015/05/02</span>	</li>
+					<c:forEach items='${postList }' var="vo">
+					<li><a href="">${vo.title }</a> <span>${vo.regDate }</span>	</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>
@@ -52,7 +54,9 @@
 		<div id="navigation">
 			<h2>카테고리</h2>
 			<ul>
-				<li><a href="">${categoryList.name }</a></li>
+				<c:forEach items='${categoryList }' var="vo">
+				<li><a href="">${vo.name }</a> <span>${vo.regDate }</span>	</li>
+				</c:forEach>
 			</ul>
 		</div>
 		

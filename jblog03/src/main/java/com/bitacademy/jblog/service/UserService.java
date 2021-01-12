@@ -43,7 +43,7 @@ public class UserService {
 		categoryVo.setDesc("");
 		categoryVo.setId(userVo.getId());
 		
-		categoryRepository.insertCategory(categoryVo);	
+		
 	}
 	
 	public UserVo getUser(UserVo userVo) {

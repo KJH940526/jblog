@@ -30,8 +30,8 @@ public class BlogService {
 		return blogRepository.getCategoryList(id);
 	}
 	
-	public void writeCategory(CategoryVo categoryVo) {
-		System.out.println(categoryVo);
+	public void writeCategory(String id, CategoryVo categoryVo) {
+		System.out.println(id + " " +categoryVo);
 		blogRepository.insertCategory(categoryVo);	
 	}
 
