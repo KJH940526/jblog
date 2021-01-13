@@ -6,7 +6,14 @@ public class CategoryVo {
 	private String desc;
 	private String regDate;
 	private String id;
+	private Long postCount;
 	
+	public Long getPostCount() {
+		return postCount;
+	}
+	public void setPostCount(Long postCount) {
+		this.postCount = postCount;
+	}
 	public Long getNo() {
 		return no;
 	}
@@ -40,7 +47,7 @@ public class CategoryVo {
 	@Override
 	public String toString() {
 		return "CategoryVo [no=" + no + ", name=" + name + ", desc=" + desc + ", regDate=" + regDate + ", id=" + id
-				+ "]";
+				+ ", postCount=" + postCount + "]";
 	}
 	
 	

@@ -55,7 +55,7 @@
 			<h2>카테고리</h2>
 			<ul>
 				<c:forEach items='${categoryList }' var="vo">
-				<li><a href="">${vo.name }</a> <span>${vo.regDate }</span>	</li>
+				<li><a href="${pageContext.request.contextPath}/${id }/${vo.no }">${vo.name }</a> <span>${vo.regDate }</span>	</li>
 				</c:forEach>
 			</ul>
 		</div>

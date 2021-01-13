@@ -4,8 +4,7 @@
 <mapper namespace="post">
 	<insert id="insertPost" parameterType="postVo">
 		<![CDATA[
-		insert into post 
-		values(null, #{title }, #{contents }, now(), #{categoryNo })
+			insert into post values(null, #{title }, #{contents }, now(), #{categoryNo })
 		]]>
 	</insert>
 	
@@ -23,6 +22,15 @@
 			delete from post where category_no=#{no }
 		]]>
 	</delete>
+	
+	
+	<select id="findPost" parameterType="Long" resultType="postvo">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date,"%Y/%m/%d") as regDate 
+			from post 
+			where category_no=#{category }
+		]]>
+	</select>
 
 
 </mapper>

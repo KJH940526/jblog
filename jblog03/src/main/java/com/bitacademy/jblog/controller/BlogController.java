@@ -75,6 +75,7 @@ public class BlogController {
 		}
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		List<CategoryVo> categoryList =  blogService.getCategoryList(id);
+		System.out.println(categoryList);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("blogVo", blogVo);
 		
@@ -106,7 +107,7 @@ public class BlogController {
 	}
 	
 	@Auth
-	@RequestMapping("/write")
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write(
 			@AuthUser UserVo authUser,
 			@PathVariable String id,
@@ -118,7 +119,27 @@ public class BlogController {
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		model.addAttribute("blogVo", blogVo);
 		
+		//카테고리 리스트
+		List<CategoryVo> categoryList =  blogService.getCategoryList(id);
+		model.addAttribute("categoryList", categoryList);
+		
 		return "blog/blog-admin-write";
+	}
+	
+	@Auth
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(
+			@AuthUser UserVo authUser,
+			@PathVariable String id,
+			PostVo postVo
+			) {
+		if(authUser.getId().equals(id) == false){
+			return "redirect:/" + authUser.getId(); 
+		}
+		System.out.println("=====================" + postVo);
+		blogService.writePost(postVo);
+		
+		return "redirect:/"+id;
 	}
 
 }
