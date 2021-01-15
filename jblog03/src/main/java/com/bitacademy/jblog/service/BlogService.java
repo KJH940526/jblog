@@ -1,8 +1,6 @@
 package com.bitacademy.jblog.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +43,10 @@ public class BlogService {
 	
 	public void deleteCategory(Long no) {
 		blogRepository.deleteCategory(no);
+	}
+	
+	public PostVo getPost(Long postNo) {
+		return blogRepository.getPost(postNo);
 	}
 	
 }

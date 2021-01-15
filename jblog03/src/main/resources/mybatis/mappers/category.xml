@@ -13,9 +13,9 @@
 	
 	<select id='getCategoryList' parameterType='string' resultType='categoryVo'>
 		<![CDATA[
-		select c.no, c.name, c.desc
+		select c.no, c.name, c.desc, c.id
 		from category c
-		where id = #{id }
+		where c.id = #{id }
 		]]>
 	</select>
 	

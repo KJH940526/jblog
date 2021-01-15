@@ -59,8 +59,8 @@ public class BlogRepository {
 	}
 	
 	//포스트 보기
-	public PostVo findByNo(Long no){
-		return sqlSession.selectOne("post.findByNo", no);
+	public PostVo getPost(Long no) {
+		return sqlSession.selectOne("post.find", no);
 	}
 	
 	

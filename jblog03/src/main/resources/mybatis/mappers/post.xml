@@ -23,12 +23,19 @@
 		]]>
 	</delete>
 	
-	
 	<select id="findPost" parameterType="Long" resultType="postvo">
 		<![CDATA[
 			select no, title, contents, date_format(reg_date,"%Y/%m/%d") as regDate 
 			from post 
 			where category_no=#{category }
+		]]>
+	</select>
+	
+	<select id="find" parameterType="Long" resultType="postvo">
+		<![CDATA[
+			select no, title, contents, reg_date, category_no
+			from post
+			where no=#{no}
 		]]>
 	</select>
 

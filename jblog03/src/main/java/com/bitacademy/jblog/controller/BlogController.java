@@ -33,15 +33,34 @@ public class BlogController {
 			@PathVariable Optional<Long> post, 
 			Model model) {
 
-		System.out.println(id +" " + category+" " + post);				
+		System.out.println(id +" " + category+" " + post);	
+		
+		Long categoryNo = 0L;
+		Long postNo = 0L;
+		
+		if( post.isPresent() ) {
+			postNo = post.get();
+			categoryNo = category.get();
+		} else if( category.isPresent() ){
+			postNo = post.get();
+		}
+
+		System.out.println("-------------"+ categoryNo);
+		System.out.println("-------------"+ postNo);
+		
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
+		List<CategoryVo> categoryList =  blogService.getCategoryList(id);
 		
-		List<CategoryVo> categoryList =  blogService.getCategoryList(id);	
+		System.out.println(categoryList);
 		List<PostVo> postList = blogService.getPostList(id);
+		PostVo postVo = blogService.getPost(postNo);
 		
+	
 		model.addAttribute("blogVo", blogVo);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("postList", postList);
+		model.addAttribute("postVo", postVo);
+		
 		
 		
 		return "blog/blog-main";
@@ -73,6 +92,7 @@ public class BlogController {
 		if(authUser.getId().equals(id) == false){
 			return "redirect:/" + authUser.getId(); 
 		}
+		System.out.println("-------------" + authUser + "---------");
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		List<CategoryVo> categoryList =  blogService.getCategoryList(id);
 		System.out.println(categoryList);
@@ -92,7 +112,7 @@ public class BlogController {
 		if(authUser.getId().equals(id) == false){
 			return "redirect:/" + authUser.getId(); 
 		}
-		
+		System.out.println("-------------" + authUser + "---------");
 		blogService.writeCategory(id,categoryVo);
 		
 		return "redirect:/"+id+"/category";
@@ -116,6 +136,7 @@ public class BlogController {
 		if(authUser.getId().equals(id) == false){
 			return "redirect:/" + authUser.getId(); 
 		}
+		System.out.println(authUser + "---------");
 		BlogVo blogVo = blogService.getLogoAndTitle(id);
 		model.addAttribute("blogVo", blogVo);
 		
@@ -141,5 +162,6 @@ public class BlogController {
 		
 		return "redirect:/"+id;
 	}
+	
 
 }
