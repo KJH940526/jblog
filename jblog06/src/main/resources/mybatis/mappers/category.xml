@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="category">
+
+	<!-- 카테고리 만들기! -->
+	<insert id="insertCategory" parameterType="categoryVo">
+		<![CDATA[
+		insert into category 
+		values(null, #{name }, #{desc }, now(), #{id })
+		]]>
+	</insert>
+	
+	<select id='getCategoryList' parameterType='string' resultType='categoryVo'>
+		<![CDATA[
+		select c.no, c.name, c.desc, c.id
+		from category c
+		where c.id = #{id }
+		]]>
+	</select>
+	
+	<delete id="deleteCategory" parameterType="long" > 
+		<![CDATA[
+			delete from category where no=#{no }
+		]]>	
+	</delete>
+	
+</mapper>
